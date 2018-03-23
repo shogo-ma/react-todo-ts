@@ -4,12 +4,18 @@ interface TodoInputState {
   value: string;
 }
 
-export class TodoInput extends React.Component<{}, TodoInputState> {
-  constructor() {
-    super({});
+interface TodoInputProps {
+  addTask: (content: string) => void;
+}
+
+export class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
+  constructor(props: TodoInputProps) {
+    super(props);
     this.state = {
       value: ''
     };
+
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   public handleOnChange(inputValue: string) {
@@ -19,7 +25,7 @@ export class TodoInput extends React.Component<{}, TodoInputState> {
   }
 
   public handleOnClick() {
-    // not implemented
+    this.props.addTask(this.state.value);
   }
 
   render() {
@@ -29,7 +35,7 @@ export class TodoInput extends React.Component<{}, TodoInputState> {
           type="text"
           onChange={e => this.handleOnChange(e.target.value)}
         />
-        <button onClick={e => this.handleOnClick()}>add</button>
+        <button onClick={this.handleOnClick}>add</button>
       </div>
     );
   }
