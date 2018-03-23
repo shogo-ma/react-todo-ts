@@ -1,19 +1,22 @@
 import * as React from 'react';
-import './App.css';
+import { TodoList } from './components/TodoList';
 
-const logo = require('./logo.svg');
+interface AppState {
+  todos: { id: number; content: string }[];
+}
 
-class App extends React.Component {
+class App extends React.Component<{}, AppState> {
+  constructor() {
+    super({});
+
+    this.state = {
+      todos: [{ id: 1, content: 'test1' }, { id: 1, content: 'test2' }]
+    };
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+      <div>
+        <TodoList todos={this.state.todos} />
       </div>
     );
   }
