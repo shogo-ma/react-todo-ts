@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TodoList } from './components/TodoList';
+import { TodoInput } from './components/TodoInput';
 
 interface AppState {
   todos: { id: number; content: string }[];
@@ -16,6 +17,7 @@ class App extends React.Component<{}, AppState> {
   render() {
     return (
       <div>
+        <TodoInput />
         <TodoList todos={this.state.todos} />
       </div>
     );
