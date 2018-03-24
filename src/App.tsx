@@ -1,4 +1,5 @@
 import * as React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TodoList } from './components/TodoList';
 import { TodoInput } from './components/TodoInput';
 
@@ -32,8 +33,10 @@ class App extends React.Component<{}, AppState> {
   render() {
     return (
       <div style={AppStyle}>
-        <TodoInput addTask={this.addTask} />
-        <TodoList todos={this.state.todos} />
+        <MuiThemeProvider>
+          <TodoInput addTask={this.addTask} />
+          <TodoList todos={this.state.todos} />
+        </MuiThemeProvider>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -36,15 +35,13 @@ export class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
   render() {
     return (
       <div>
-        <MuiThemeProvider>
-          <TextField value={this.state.value} onChange={this.handleOnChange} />
-          <RaisedButton
-            label="add"
-            primary={true}
-            onClick={this.handleOnClick}
-            disabled={this.state.value === ''}
-          />
-        </MuiThemeProvider>
+        <TextField value={this.state.value} onChange={this.handleOnChange} />
+        <RaisedButton
+          label="add"
+          primary={true}
+          onClick={this.handleOnClick}
+          disabled={this.state.value === ''}
+        />
       </div>
     );
   }
