@@ -6,6 +6,11 @@ interface AppState {
   todos: { id: number; content: string }[];
 }
 
+const AppStyle = {
+  width: '300px',
+  margin: '0 auto'
+};
+
 class App extends React.Component<{}, AppState> {
   constructor() {
     super({});
@@ -19,14 +24,14 @@ class App extends React.Component<{}, AppState> {
 
   public addTask(content: string) {
     const todos = this.state.todos.slice();
-    todos.push({ id: todos.length + 1, content: 'aiueo' });
+    todos.push({ id: todos.length + 1, content: content });
 
     this.setState({ todos });
   }
 
   render() {
     return (
-      <div>
+      <div style={AppStyle}>
         <TodoInput addTask={this.addTask} />
         <TodoList todos={this.state.todos} />
       </div>
