@@ -7,7 +7,7 @@ interface AppState {
 }
 
 const AppStyle = {
-  width: '300px',
+  width: '400px',
   margin: '0 auto'
 };
 

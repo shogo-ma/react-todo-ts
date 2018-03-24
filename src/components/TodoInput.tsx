@@ -1,4 +1,7 @@
 import * as React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 interface TodoInputState {
   value: string;
@@ -15,12 +18,14 @@ export class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
       value: ''
     };
 
+    this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  public handleOnChange(inputValue: string) {
+  public handleOnChange(e: React.SyntheticEvent<EventTarget>) {
+    const target = e.target as HTMLInputElement;
     this.setState({
-      value: inputValue
+      value: target.value
     });
   }
 
@@ -31,11 +36,14 @@ export class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
   render() {
     return (
       <div>
-        <input
-          type="text"
-          onChange={e => this.handleOnChange(e.target.value)}
-        />
-        <button onClick={this.handleOnClick}>add</button>
+        <MuiThemeProvider>
+          <TextField value={this.state.value} onChange={this.handleOnChange} />
+          <RaisedButton
+            label="add"
+            primary={true}
+            onClick={this.handleOnClick}
+          />
+        </MuiThemeProvider>
       </div>
     );
   }
