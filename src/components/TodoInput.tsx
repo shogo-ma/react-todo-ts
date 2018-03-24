@@ -42,6 +42,7 @@ export class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
             label="add"
             primary={true}
             onClick={this.handleOnClick}
+            disabled={this.state.value === ''}
           />
         </MuiThemeProvider>
       </div>
